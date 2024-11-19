@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>Вакансии</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/work.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="site-title">
+                <a href="/home">Транспорт Курск</a>
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="/home">Главная</a></li>
+                    <li><a href="/history">История</a></li>
+                    <li><a href="/work">Вакансии</a></li>
+                    {% if current_user.is_authenticated %}
+                        <li><a href="{{ url_for('lk') }}">Личный кабинет</a></li>
+                        <li><a href="{{ url_for('bus_online') }}">Маршруты онлайн</a></li>
+                        <li><a href="{{ url_for('logout') }}">Выйти</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('login') }}">Войти</a></li>
+                        <li><a href="{{ url_for('register') }}">Регистрация</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input id="s" type="text" placeholder="Поиск">
+                <button type="submit" class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="sidebar">
+        <div class="sidebar-item">
+            <i class="fas fa-home"></i>
+            <span class="text"><a href="/home">Главная</a></span>
+        </div>
+        <div class="sidebar-item">
+            <i class="fas fa-info-circle"></i>
+            <span class="text"><a href="/history">История</a></span>
+        </div>
+        <div class="sidebar-item">
+            <i class="fas fa-briefcase"></i>
+            <span class="text"><a href="/work">Вакансии</a></span>
+        </div>
+        <div class="sidebar-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span class="text"><a href="/bus_online">Маршруты онлайн</a></span>
+        </div>
+        <div class="sidebar-item">
+            <i class="fas fa-user-alt"></i>
+            <span class="text"><a href="/lk">Личный кабинет</a></span>
+        </div>
+    </div>
+
+    <div class="content">
+        <!-- Профессия водителя автобуса -->
+        <div class="section">
+            <h2>Профессия водителя Курского автобуса</h2>
+            <p>Водитель автобуса в Курске — это важная профессия, требующая высокой ответственности и навыков управления транспортным средством. Водители курских автобусов обеспечивают регулярные перевозки пассажиров по различным маршрутам города, часто сталкиваются с сложными дорожными условиями и обязаны соблюдать правила безопасности. Эта работа требует внимательности, терпения и хорошего знания маршрутов города.</p>
+            <div class="image-container">
+                <img src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_65c215e1384486365434e1f2_65c215ec384486365434e297/scale_1200" alt="Водитель автобуса">
+            </div>
+        </div>
+
+        <!-- Профессия контролёра -->
+        <div class="section">
+            <h2>Профессия контролёра</h2>
+            <p>Контролёр — это специалист, который занимается проверкой оплаты проезда в общественном транспорте. В Курске контролёры работают как в автобусах, так и в трамваях, проверяя у пассажиров билеты или наличие оплатных карт. Они помогают поддерживать порядок в транспорте, а также обеспечивают соблюдение правил пассажирскими перевозками. Эта работа требует внимательности, честности и умения общаться с пассажирами.</p>
+            <div class="image-container">
+                <img src="https://static.mk.ru/upload/entities/2023/09/18/12/articles/facebookPicture/5b/2b/37/6a/a88a0efed086bc84adcf0a88384514cb.jpg" alt="Контролёр">
+            </div>
+        </div>
+
+        <!-- Профессия машиниста трамвая -->
+        <div class="section">
+            <h2>Профессия машиниста Курского трамвая</h2>
+            <p>Машинист трамвая — это специалист, управляющий трамваем. В Курске машинисты трамваев играют ключевую роль в поддержании городской транспортной сети. Работа машиниста требует высокой квалификации и умения работать с техническим оборудованием, а также способности оперативно реагировать на изменения ситуации на дороге. Машинисты обеспечивают безопасность пассажиров, контролируют движение по маршруту и взаимодействуют с диспетчерами.</p>
+            <div class="image-container">
+                <img src="https://apps3proxy.mosmetro.tech/trambest1.jpg" alt="Машинист трамвая">
+            </div>
+        </div>
+    </div>
+
+    <!-- Контактная информация -->
+    <div class="contact">
+        <p>Интересует вакансия? Звоните на номер: +7 (800) 123-45-67</p>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+
+</html>
+

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>Главная</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="site-title">
+                <a href="/home">Транспорт Курск</a>
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="/home">Главная</a></li>
+                    <li><a href="/history">История</a></li>
+                    <li><a href="/work">Вакансии</a></li>
+                    {% if current_user.is_authenticated %}
+                        <li><a href="{{ url_for('lk') }}">Личный кабинет</a></li>
+                        <li><a href="{{ url_for('bus_online') }}">Маршруты онлайн</a></li>
+                        <li><a href="{{ url_for('logout') }}">Выйти</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('login') }}">Войти</a></li>
+                        <li><a href="{{ url_for('register') }}">Регистрация</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input id="s" type="text" placeholder="Поиск">
+                <button type="submit" class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+   <div class="sidebar">
+    <div class="sidebar-item">
+        <i class="fas fa-home"></i>
+        <span class="text"><a href="/home">Главная</a></span>
+    </div>
+    <div class="sidebar-item">
+        <i class="fas fa-info-circle"></i>
+        <span class="text"><a href="/history">История</a></span>
+    </div>
+    <div class="sidebar-item">
+        <i class="fas fa-briefcase"></i>
+        <span class="text"><a href="/work">Вакансии</a></span>
+    </div>
+    <div class="sidebar-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span class="text"><a href="/bus_online">Маршруты онлайн</a></span>
+    </div>
+    <div class="sidebar-item">
+        <i class="fas fa-user-alt"></i>
+        <span class="text"><a href="/lk">Личный кабинет</a></span>
+    </div>
+</div>
+
+
+    <div class="content">
+        <div class="image-container">
+            <img src="https://kpravda.ru/wp-content/uploads/2022/12/avtobusy-1.jpg" class="rounded-image">
+        </div>
+
+        <div class="news-container">
+            <div class="news-item">
+                <img src="https://kurskiytransport.ru/images/news/BKD-RF.jpg">
+                <div class="news-content">
+                    <div class="news-title">Опрос граждан о качестве услуг</div>
+                    <div class="news-text">С 5 по 15 ноября проводится опрос граждан о качестве оказываемых услуг проезда на наземном общественном транспорте...</div>
+                    <div class="news-date">6 ноября 2024</div>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <img src="https://kurskiytransport.ru/images/banners/kurskiy_transport/kt.jpg">
+                <div class="news-content">
+                    <div class="news-title">Меняется период оплаты транспорта</div>
+                    <div class="news-text">С 1 ноября 2024 года меняется период оплаты транспортного сервиса Карты жителя Курской области...</div>
+                    <div class="news-date">15 ноября 2024</div>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <img src="https://kurskiytransport.ru/images/Kurskiy_Transport/news/tramvaj1.jpg">
+                <div class="news-content">
+                    <div class="news-title">Зачем нужны кнопки адресного открытия дверей?</div>
+                    <div class="news-text">В новых трамваях модели «Львёнок» есть кнопки адресного открытия дверей...</div>
+                    <div class="news-date">26 июля 2024</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+

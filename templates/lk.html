@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <title>Главная</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/lk.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="site-title">
+        <a href="/home">Транспорт Курск</a>
+      </div>
+      <nav class="navigation">
+        <ul>
+          <li><a href="/home">Главная</a></li>
+          <li><a href="/info">История</a></li>
+          <li><a href="/work">Вакансии</a></li>
+          {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('lk') }}">Личный кабинет</a></li>
+            <li><a href="{{ url_for('bus_online') }}">Маршруты онлайн</a></li>
+            <li><a href="{{ url_for('logout') }}">Выйти</a></li>
+          {% else %}
+            <li><a href="{{ url_for('login') }}">Войти</a></li>
+            <li><a href="{{ url_for('register') }}">Регистрация</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+      <div class="search-box">
+        <input id="s" type="text" placeholder="Поиск">
+        <button type="submit" class="search-button">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+ <div class="sidebar">
+    <div class="sidebar-item">
+        <i class="fas fa-home"></i>
+        <span class="text"><a href="/home">Главная</a></span>
+    </div>
+    <div class="sidebar-item">
+        <i class="fas fa-info-circle"></i>
+        <span class="text"><a href="/history">История</a></span>
+    </div>
+    <div class="sidebar-item">
+        <i class="fas fa-briefcase"></i>
+        <span class="text"><a href="/work">Вакансии</a></span>
+    </div>
+    <div class="sidebar-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span class="text"><a href="/bus_online">Маршруты онлайн</a></span>
+    </div>
+    <div class="sidebar-item">
+        <i class="fas fa-user-alt"></i>
+        <span class="text"><a href="/lk">Личный кабинет</a></span>
+    </div>
+</div>
+  <div class="contn">
+<div class="trip-container2">
+  <div id='profileInfo'>
+    <h1>Профиль пользователя</h1>
+    <p class="info">Имя: {{ current_user.name }}</p>
+    <p class="info">Фамилия: {{ current_user.last_name }}</p>
+    <p class="info">Email: {{ current_user.email }}</p>
+    <p class="info">Телефон: {{ current_user.phone }}</p>
+  </div>
+  <button onclick='toggleEdit()'>Редактировать профиль</button>
+
+  <div id='editForm' style='display:none;'>
+    <h1>Редактирование профиля</h1>
+    <form method="POST" action="{{ url_for('edit_profile') }}">
+      <label for="name">Имя:</label>
+      <input type="text" id="name" name="name" value="{{ current_user.name }}" required>
+      <br>
+      <label for="last_name">Фамилия:</label>
+      <input type="text" id="last_name" name="last_name" value="{{ current_user.last_name }}" required>
+      <br>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" value="{{ current_user.email }}" required>
+      <br>
+      <label for="phone">Телефон:</label>
+      <input type="text" id="phone" name="phone" value="{{ current_user.phone }}">
+      <br>
+      <button type="submit">Сохранить</button>
+    </form>
+    <button onclick='toggleEdit()'>Отмена</button>
+  </div>
+</div>
+
+
+<script>
+  function toggleEdit() {
+    let profileInfo = document.getElementById('profileInfo');
+    let editForm = document.getElementById('editForm');
+    if (profileInfo.style.display === 'none') {
+      profileInfo.style.display = 'block';
+      editForm.style.display = 'none';
+    } else {
+      profileInfo.style.display = 'none'; // Скрыть информацию профиля
+      editForm.style.display = 'block';
+    }
+  }
+</script>
+
+
+<div class="trip-container">
+    <h2>История поездок:</h2>
+    <div class="trip-box" onclick="toggleDetails('trip-1')">
+      <div class="trip-summary">
+        <span class="trip-date">12 ноября 2024</span>
+        <span class="trip-amount">2 ₽</span>
+      </div>
+      <div class="trip-details" id="trip-1" style="display:none;">
+        <p>Маршрут: Первая Шоссейная → Петровская</p>
+        <p>Продолжительность: 30 мин.</p>
+        <p>Тип транспорта: Поезд</p>
+        <p>Дата списания: 23.11.2024</p>
+      </div>
+    </div>
+
+    <div class="trip-box" onclick="toggleDetails('trip-2')">
+      <div class="trip-summary">
+        <span class="trip-date">10 ноября 2024</span>
+        <span class="trip-amount">10 ₽</span>
+      </div>
+      <div class="trip-details" id="trip-2" style="display:none;">
+        <p>Маршрут: Херсонская → Московская</p>
+        <p>Продолжительность: 15 мин.</p>
+        <p>Тип транспорта: Автобус</p>
+        <p>Дата списания: 24.11.2024</p>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script>
+    function toggleDetails(tripId) {
+      const details = document.getElementById(tripId);
+      if (details.style.display === 'none') {
+        details.style.display = 'block';
+      } else {
+        details.style.display = 'none';
+      }
+    }
+  </script>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

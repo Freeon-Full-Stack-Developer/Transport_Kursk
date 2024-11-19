@@ -1,0 +1,245 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  margin-top: 7%;
+}
+
+/* Шапка сайта */
+header {
+  background-color: #25ab00;
+  color: white;
+  padding: 20px 0;
+  height: 7%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 500;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.site-title a {
+  font-size: 2em;
+  color: #ffffff;
+  text-decoration: none;
+  position: absolute;
+  top: 15%;
+  left: 1%;
+}
+
+.navigation ul {
+  position: absolute;
+  left: 30%;
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.navigation li {
+  display: inline-block;
+}
+
+.navigation a {
+  color: #ffffff;
+  transition: text-shadow 0.3s ease;
+  text-decoration: none;
+  font-size: 1em;
+}
+
+.navigation a:hover {
+  text-shadow: 0 0 20px #ffffff;
+}
+
+.search-box {
+  position: absolute;
+  top: 15%;
+  right: 1%;
+  display: flex;
+  align-items: center;
+}
+
+.search-box input {
+  padding: 5px 10px;
+  height: 35px;
+  border-radius: 20px;
+  border: none;
+  width: 200px;
+}
+
+.search-box button {
+  background-color: #31AA39;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.search-box button i {
+  color: white;
+  font-size: 18px;
+}
+
+.search-box input:focus {
+  outline: none;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Сайдбар */
+.sidebar {
+    border-radius: 0 10px 10px 0;
+    position: fixed;
+    top: 8%;
+    left: 0;
+    width: 50px;
+    height: 90%;
+    background-color: #25ab00;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: width 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar-item {
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    transition: opacity 0.3s ease, padding-left 0.3s ease;
+}
+
+.sidebar-item i {
+    font-size: 24px;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-item .text {
+    display: none;
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar:hover {
+    width: 200px;
+}
+
+.sidebar:hover .sidebar-item {
+    padding-left: 15px;
+}
+
+.sidebar:hover .sidebar-item .text {
+    display: block;
+    opacity: 1;
+}
+
+.sidebar:hover .sidebar-item i {
+    opacity: 0;
+}
+
+/* Эффект размытия при наведении на сайдбар */
+.sidebar:hover ~ .content {
+    filter: blur(5px);
+    transition: filter 0.3s ease;
+}
+
+.content {
+    margin-left: 60px;
+    padding: 20px;
+    width: 100%;
+}
+
+.news-container {
+    max-width: 90%;
+    margin: 100px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.news-item {
+    display: flex;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    gap: 20px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.news-item img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.news-content {
+    flex: 1;
+}
+
+.news-title {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.news-text {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.news-date {
+    font-size: 0.9em;
+    color: #888;
+}
+
+.image-container {
+    position: relative;
+    width: 90%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.rounded-image {
+    position: absolute;
+    bottom: -70%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: auto;
+    border-radius: 15px;
+}
+.sidebar-item a {
+    text-decoration: none; /* Убирает подчеркивание */
+    color: white; /* Цвет текста */
+}
+
+.sidebar-item a:hover {
+    color: #ccc; /* Цвет текста при наведении */
+}

@@ -1,0 +1,399 @@
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      display: flex;
+      transition: filter 0.3s ease; /* Плавное изменение фильтра размытия */
+    }
+
+    /* Шапка сайта */
+    header {
+      background-color: #25ab00;
+      color: white;
+      padding: 20px 0;
+      height: 7%;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 500; /* Снижаем z-index, чтобы сайдбар был выше шапки */
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .site-title a {
+      font-size: 2em;
+      color: #ffffff;
+      text-decoration: none;
+      position: absolute;
+      top: 15%; /* Отступ сверху 50px */
+      left: 1%; /* Отступ справа 20px */
+    }
+
+    .navigation ul {
+      position: absolute;
+      left: 30%;
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .navigation li {
+      display: inline-block;
+    }
+
+    .navigation a {
+      color: #ffffff; /* Черный цвет текста */
+      text-decoration: none;
+      font-size: 1em;
+      transition: color 0.3s;
+    }
+
+    .navigation a:hover {
+      text-shadow: 0 0 20px #ffffff; /* Красное свечение */
+    }
+
+    .search-box {
+      position: absolute;
+      top: 15%;
+      right: 1%;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      padding: 5px 10px;
+      height: 35px;
+      border-radius: 20px;
+      border: none;
+      width: 200px;
+    }
+
+    .search-box button {
+      background-color: #31AA39;
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .search-box button i {
+      color: white;
+      font-size: 18px;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    }
+
+ .sidebar {
+    border-radius: 0 10px 10px 0;
+    position: fixed;
+    top: 8%;
+    left: 0;
+    width: 50px;
+    height: 90%;
+    background-color: #25ab00;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: width 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar-item {
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    transition: opacity 0.3s ease, padding-left 0.3s ease;
+}
+
+.sidebar-item i {
+    font-size: 24px;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-item .text {
+    display: none;
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar:hover {
+    width: 200px;
+}
+
+.sidebar:hover .sidebar-item {
+    padding-left: 15px;
+}
+
+.sidebar:hover .sidebar-item .text {
+    display: block;
+    opacity: 1;
+}
+
+.sidebar:hover .sidebar-item i {
+    opacity: 0;
+}
+
+/* Эффект размытия при наведении на сайдбар */
+.sidebar:hover ~ .content {
+    filter: blur(5px);
+    transition: filter 0.3s ease;
+}
+
+.content {
+    margin-left: 60px;
+    padding: 20px;
+    width: 100%;
+}
+
+.news-container {
+    max-width: 90%;
+    margin: 100px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.news-item {
+    display: flex;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    gap: 20px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.news-item img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.news-content {
+    flex: 1;
+}
+
+.news-title {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.news-text {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.news-date {
+    font-size: 0.9em;
+    color: #888;
+}
+
+.image-container {
+    position: relative;
+    width: 90%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.rounded-image {
+    position: absolute;
+    bottom: -70%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: auto;
+    border-radius: 15px;
+}
+.sidebar-item a {
+    text-decoration: none; /* Убирает подчеркивание */
+    color: white; /* Цвет текста */
+}
+
+.sidebar-item a:hover {
+    color: #ccc; /* Цвет текста при наведении */
+}
+
+    /* Контейнер для поездок */
+    .trip-container {
+      position: absolute;
+      right: 5%;
+      top: 20%;
+      gap: 20px;
+      width: 28%; /* Ограничиваем ширину контейнера до 30% */
+      min-height: 70%; /* Устанавливаем минимальную высоту */
+      background-color: #fff;
+      border-radius: 5%;
+      padding: 20px;
+      border: 5px solid #ccc; /* Серая рамка */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .trip-container2 {
+      position: absolute;
+      left: 5%;
+      top: 20%;
+      gap: 20px;
+      width: 61%; /* Ограничиваем ширину контейнера до 30% */
+      height: 70%; /* Устанавливаем минимальную высоту */
+      background-color: #fff;
+      border-radius: 5%;
+      padding: 20px;
+      border: 5px solid #ccc; /* Серая рамка */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Индивидуальный бокс поездки */
+    .trip-box {
+      margin-bottom: 2%;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .trip-box:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .trip-summary {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .trip-date {
+      color: #666;
+    }
+
+    .trip-amount {
+      color: #25ab00; /* Зеленый цвет для суммы */
+    }
+
+    .trip-details {
+      display: none;
+      font-size: 1rem;
+      margin-top: 10px;
+      color: #555;
+    }
+
+    /* Анимация раскрытия */
+    .trip-details.show {
+      display: block;
+      animation: slideDown 0.3s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        max-height: 0;
+        opacity: 0;
+      }
+      to {
+        max-height: 500px;
+        opacity: 1;
+      }
+    }
+
+    .trip-container2 i {
+      margin-bottom: 10px; /* Отступ снизу для иконки */
+      color: #333; /* Цвет иконки */
+    }
+
+    .trip-container2 form {
+      display: flex; /* Используем flexbox для выравнивания */
+      flex-direction: column; /* Вертикальная ориентация */
+       /* Отступ между элементами формы */
+    }
+
+    .trip-container2 label {
+      font-weight: bold; /* Жирный шрифт для меток */
+      color: #555; /* Цвет меток */
+    }
+
+    .trip-container2 input[type="text"],
+    .trip-container2 input[type="email"] {
+      padding: 10px; /* Отступы внутри полей ввода */
+      border: 1px solid #ccc; /* Рамка полей */
+      border-radius: 5px; /* Закругленные углы полей */
+      transition: border-color 0.3s; /* Плавный переход цвета рамки */
+    }
+
+    .trip-container2 input[type="text"]:focus,
+    .trip-container2 input[type="email"]:focus {
+      border-color: #007bff; /* Цвет рамки при фокусе */
+      outline: none; /* Убираем стандартное обрамление */
+    }
+
+    .trip-container2 button {
+      background-color: #25ab00; /* Цвет фона кнопки */
+      color: white; /* Цвет текста кнопки */
+      padding: 10px; /* Отступы внутри кнопки */
+      border: none; /* Убираем рамку */
+      border-radius: 5px; /* Закругленные углы кнопки */
+      cursor: pointer; /* Курсор в виде указателя при наведении */
+      transition: background-color 0.3s; /* Плавный переход цвета фона */
+    }
+
+    .trip-container2 button:hover {
+      background-color: #186f00; /* Цвет фона кнопки при наведении */
+    }
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between profile items */
+  margin-bottom: 20px; /* Space below the profile */
+}
+
+.info {
+  font-size: 1.1em; /* Slightly larger font size for better readability */
+  color: #333; /* Darker text color */
+  padding: 10px; /* Padding for better spacing */
+  border: 1px solid #ccc; /* Light border around info */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #f9f9f9; /* Light background color */
+}
+.sidebar-item a {
+    text-decoration: none; /* Убирает подчеркивание */
+    color: white; /* Цвет текста */
+}
+
+.sidebar-item a:hover {
+    color: #ccc; /* Цвет текста при наведении */
+}
+.sidebar:hover ~ .contn {
+    filter: blur(5px);
+    transition: filter 0.3s ease;
+}

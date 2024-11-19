@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>История</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/history.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="site-title">
+                <a href="/home">Транспорт Курск</a>
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="/home">Главная</a></li>
+                    <li><a href="/history">История</a></li>
+                    <li><a href="/work">Вакансии</a></li>
+                    {% if current_user.is_authenticated %}
+                        <li><a href="{{ url_for('lk') }}">Личный кабинет</a></li>
+                        <li><a href="{{ url_for('bus_online') }}">Маршруты онлайн</a></li>
+                        <li><a href="{{ url_for('logout') }}">Выйти</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('login') }}">Войти</a></li>
+                        <li><a href="{{ url_for('register') }}">Регистрация</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input id="s" type="text" placeholder="Поиск">
+                <button type="submit" class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+   <div class="sidebar">
+    <div class="sidebar-item">
+        <i class="fas fa-home"></i>
+        <span class="text"><a href="/home">Главная</a></span>
+    </div>
+    <div class="sidebar-item">
+        <i class="fas fa-info-circle"></i>
+        <span class="text"><a href="/history">История</a></span>
+    </div>
+    <div class="sidebar-item">
+        <i class="fas fa-briefcase"></i>
+        <span class="text"><a href="/work">Вакансии</a></span>
+    </div>
+    <div class="sidebar-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span class="text"><a href="/bus_online">Маршруты онлайн</a></span>
+    </div>
+    <div class="sidebar-item">
+        <i class="fas fa-user-alt"></i>
+        <span class="text"><a href="/lk">Личный кабинет</a></span>
+    </div>
+</div>
+
+
+<div class="content">
+
+    <div class="section">
+        <h2>Ранние годы развития</h2><BR>
+        <p>Курск, как и многие другие города России, начал развивать систему общественного транспорта в конце XIX века. В первые десятилетия после основания города в нем были организованы пешие маршруты, а с развитием железных дорог начали курсировать и первые трамваи. В этом разделе мы расскажем о первых шагах города в организации транспорта...</p><BR>
+        <div class="image-container">
+            <img src="https://getmuseum.ru/images/page/1412966433.jpg">
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Советский период</h2>
+<BR>
+        <p>В 1920-30-е годы Курск активно развивал свою транспортную сеть, появились новые маршруты и более современные виды транспорта. В это время также значительно улучшилось состояние трамвайных и автобусных маршрутов. Общественный транспорт стал неотъемлемой частью городской жизни, а его развитие оказывало важное влияние на урбанистическую структуру города...</p><BR>
+        <div class="image-container">
+            <img src="https://avatars.dzeninfra.ru/get-zen_doc/3429702/pub_6368e265bbfba952faa2ae21_6368f3e98762c71332dce906/scale_1200">
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Современные тенденции</h2><BR>
+        <p>С конца XX века Курск пережил несколько этапов модернизации своего общественного транспорта. Новые виды общественного транспорта, такие как маршрутки и современные автобусы, стали заменой старым моделям. В последние годы город активно развивает сеть пассажирских перевозок, улучшая качество обслуживания и удобство для горожан...</p><BR>
+        <div class="image-container">
+            <img src="https://s0.rbk.ru/v6_top_pics/media/img/1/10/756783731595101.jpeg">
+        </div>
+    </div>
+
+</div>
+
+  </div>
+
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+

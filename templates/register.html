@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="register-container">
+    <h2 class="register-title">Регистрация</h2>
+
+    <form method="POST" class="register-form">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <label for="username">{{ form.username.label }}</label>
+            {{ form.username(class="form-input") }}
+            {% for error in form.username.errors %}
+                <span class="error-message">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label for="password">{{ form.password.label }}</label>
+            {{ form.password(class="form-input") }}
+            {% for error in form.password.errors %}
+                <span class="error-message">{{ error }}</span>
+            {% endfor %}
+        </div>
+    <!-- Отображение flash-сообщений -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+        <div class="form-group">
+            <button type="submit" class="submit-btn">{{ form.submit() }}</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+
